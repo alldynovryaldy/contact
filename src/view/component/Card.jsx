@@ -1,10 +1,9 @@
-import React from "react";
 import Router from "../../router";
 import { Link } from "react-router-dom";
 
 const Card = () => {
    return (
-      <div className="container">
+      <div className="container col-ms-6">
          <div className="card">
             <h5 className="card-header">
                {/* Link adalah link yang akan tampil di view aplikasi */}
