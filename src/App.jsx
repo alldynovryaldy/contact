@@ -1,21 +1,9 @@
-import "./App.css";
-
-const FuncNama = (props) => {
-   console.log(props);
-   return (
-      <div>
-         <p>Hello</p>
-         <p>Ini dari function nama</p>
-      </div>
-   );
-};
+import Card from "./view/component/Card";
 
 const App = () => {
-   const nama = "Alldy Novryaldy";
    return (
-      <div className="App">
-         <h1>{nama}</h1>
-         <FuncNama />
+      <div className="App p-3">
+         <Card />
       </div>
    );
 };
