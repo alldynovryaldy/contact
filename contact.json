@@ -1,24 +1,3 @@
 {
-   "contact": [
-      {
-         "id": 1,
-         "name": "Alldy",
-         "number": "082138534673"
-      },
-      {
-         "id": 2,
-         "name": "Novryaldy",
-         "number": "082222222"
-      },
-      {
-         "id": 3,
-         "name": "empat",
-         "number": "082222222"
-      },
-      {
-         "id": 4,
-         "name": "Lima",
-         "number": "082222222"
-      }
-   ]
+  "contact": []
 }

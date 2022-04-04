@@ -1,16 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "../../axios";
-import ContactList from "../component/ContactList";
 
 const List = () => {
-   // diganti dengan json server
-   // const [contacts, setContacts] = useState([
-   //    { id: 1, name: "Alldy", number: "082138534673" },
-   //    { id: 2, name: "Novryaldy", number: "082222222" },
-   //    { id: 3, name: "empat", number: "082222222" },
-   //    { id: 4, name: "Lima", number: "082222222" },
-   // ]);
-
    // state contact
    const [contacts, setContacts] = useState([]);
 
@@ -20,26 +11,16 @@ const List = () => {
    // state loading di set true
    const [loading, setLoading] = useState(true);
 
-   // init handleDelet
-   const handleDelete = (idContact) => {
-      // How to it work
-      // 1. filter semua data yang id nya tidak sama dengan id yang di parsing dan di tampung di dalam variable filterContact
-      const filterContact = contacts.filter((value) => value.id !== idContact);
-
-      // 2. update state contact dgn data baru
-      setContacts(filterContact);
-
-      // note : data akan reset jika halaman di refresh, karena data hanya di simpan dalam variable objek, bukan database
-   };
-
-   // function akan di jalankan ketika halaman di render
-   useEffect(() => {
+   // get contact
+   const getContact = () => {
       axios
          .get("/contact")
          .then((res) => {
+            // masukkan value yg di dapatkan dari API kedalam state contact
             setContacts(res.data);
          })
          .catch((e) => {
+            // masukkan value error kedalam state error
             setError(e.message);
          })
          // jika axios sudh selesai di jalankan
@@ -47,6 +28,24 @@ const List = () => {
             // loading false saat data belum di temukan
             setLoading(false);
          });
+   };
+
+   const handleDelete = (id) => {
+      axios
+         .delete(`/contact/${id}`)
+         .then(() => {
+            // refresh data contact
+            getContact();
+         })
+         .catch((e) => {
+            // masukkan value error kedalam state error
+            setError(e.response.statusText);
+         });
+   };
+
+   // function akan di jalankan ketika halaman di render
+   useEffect(() => {
+      getContact();
    }, []);
 
    // parsing state contact & event handler ke Child component yaitu contactlist.jsx
@@ -54,7 +53,25 @@ const List = () => {
       <div>
          {error ?? { error }}
          {loading ? "Loading..." : ""}
-         <ContactList contacts={contacts} handleDelete={handleDelete} />
+
+         <ul className="list-group list-group-flush">
+            {/* menampilkan data contact */}
+            {contacts.map((value) => (
+               //key sebagai kode unik untuk setiap element nya
+               <li
+                  className="list-group-item d-flex justify-content-between align-items-start"
+                  key={value.id}
+               >
+                  {value.name} - {value.number}
+                  <button
+                     className="badge btn bg-danger rounded-pill"
+                     onClick={() => handleDelete(value.id)}
+                  >
+                     Delete
+                  </button>
+               </li>
+            ))}
+         </ul>
       </div>
    );
 };
