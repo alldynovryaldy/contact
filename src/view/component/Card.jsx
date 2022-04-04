@@ -8,7 +8,10 @@ const Card = () => {
             <h5 className="card-header">
                {/* Link adalah link yang akan tampil di view aplikasi */}
                <Link to="/">List Contact</Link>
-               <Link to="/create" className="btn btn-primary float-end">
+               <Link
+                  to="/create"
+                  className="badge btn bg-success rounded-pill float-end"
+               >
                   Add
                </Link>
             </h5>

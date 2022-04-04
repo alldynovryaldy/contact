@@ -60,23 +60,22 @@ const List = () => {
             {/* menampilkan data contact */}
             {contacts.map((value) => (
                //key sebagai kode unik untuk setiap element nya
-               <li
-                  className="list-group-item d-flex justify-content-between align-items-start"
-                  key={value.id}
-               >
+               <li className="list-group-item align-items-start" key={value.id}>
                   {value.name} - {value.nomor}
-                  <Link
-                     to={`/edit/${value.id}`}
-                     className="badge btn bg-danger rounded-pill"
-                  >
-                     Edit
-                  </Link>
-                  <button
-                     className="badge btn bg-danger rounded-pill"
-                     onClick={() => handleDelete(value.id)}
-                  >
-                     Delete
-                  </button>
+                  <div className="d-flex justify-content-end">
+                     <Link
+                        to={`/edit/${value.id}`}
+                        className="badge btn bg-primary rounded-pill me-1"
+                     >
+                        Edit
+                     </Link>
+                     <button
+                        className="badge btn bg-danger rounded-pill"
+                        onClick={() => handleDelete(value.id)}
+                     >
+                        Delete
+                     </button>
+                  </div>
                </li>
             ))}
          </ul>
