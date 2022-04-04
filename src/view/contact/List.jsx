@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "../../axios";
 
 const List = () => {
@@ -64,6 +65,12 @@ const List = () => {
                   key={value.id}
                >
                   {value.name} - {value.nomor}
+                  <Link
+                     to={`/edit/${value.id}`}
+                     className="badge btn bg-danger rounded-pill"
+                  >
+                     Edit
+                  </Link>
                   <button
                      className="badge btn bg-danger rounded-pill"
                      onClick={() => handleDelete(value.id)}

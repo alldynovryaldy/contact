@@ -14,6 +14,7 @@ function Router() {
       <Routes>
          <Route exact path="/" element={<List />} />
          <Route exact path="/create" element={<Create />} />
+         <Route exact path="/edit/:param" element={<Create />} />
          <Route path="*" element={<NotFound />} />
       </Routes>
    );
