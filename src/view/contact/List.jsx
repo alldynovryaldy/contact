@@ -30,6 +30,7 @@ const List = () => {
          });
    };
 
+   // handler delete
    const handleDelete = (id) => {
       axios
          .delete(`/contact/${id}`)
@@ -62,7 +63,7 @@ const List = () => {
                   className="list-group-item d-flex justify-content-between align-items-start"
                   key={value.id}
                >
-                  {value.name} - {value.number}
+                  {value.name} - {value.nomor}
                   <button
                      className="badge btn bg-danger rounded-pill"
                      onClick={() => handleDelete(value.id)}
