@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 // props = variable yang menampung data pasting dari parent component yaitu List.jsx
 function ContactList(props) {
    return (
